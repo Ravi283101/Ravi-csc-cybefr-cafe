@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RAVI CSC CYBER CAFE - Jan Seva Kendra</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;900&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --saffron: #FF6B00;
+      --deep-orange: #E85500;
+      --gold: #FFB800;
+      --light-gold: #FFD966;
+      --green: #138808;
+      --dark-green: #0A5C05;
+      --navy: #002366;
+      --white: #FFFFFF;
+      --cream: #FFF8F0;
+      --shadow: 0 8px 32px rgba(255,107,0,0.18);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; background: var(--cream); color: #1a1a1a; overflow-x: hidden; }
+
+    /* HEADER */
+    header { background: linear-gradient(135deg, var(--saffron) 0%, var(--deep-orange) 40%, var(--navy) 100%); color: white; padding: 0; position: relative; overflow: hidden; }
+    header::before { content: ''; position: absolute; top: -60px; right: -60px; width: 250px; height: 250px; border-radius: 50%; background: rgba(255,184,0,0.18); }
+    header::after { content: ''; position: absolute; bottom: -80px; left: -40px; width: 200px; height: 200px; border-radius: 50%; background: rgba(255,255,255,0.07); }
+    .top-bar { background: var(--green); text-align: center; padding: 6px 16px; font-size: 13px; font-weight: 600; letter-spacing: 1px; color: #fff; }
+    .header-inner { display: flex; align-items: center; gap: 20px; padding: 22px 32px 18px; position: relative; z-index: 1; flex-wrap: wrap; }
+    .logo-circle { width: 80px; height: 80px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 38px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); flex-shrink: 0; border: 4px solid #fff; }
+    .header-text h1 { font-size: clamp(22px, 5vw, 38px); font-weight: 900; letter-spacing: 2px; text-transform: uppercase; text-shadow: 2px 3px 8px rgba(0,0,0,0.4); line-height: 1.1; }
+    .header-text h1 span { color: var(--light-gold); }
+    .header-text .sub { font-family: 'Noto Sans Devanagari', sans-serif; font-size: clamp(14px, 2.5vw, 19px); font-weight: 600; color: #ffe0b2; margin-top: 5px; }
+    .header-text .phone { font-size: 16px; font-weight: 700; color: var(--light-gold); margin-top: 6px; display: flex; align-items: center; gap: 8px; }
+
+    /* NAV */
+    nav { background: var(--navy); display: flex; justify-content: center; gap: 8px; padding: 10px 16px; flex-wrap: wrap; }
+    nav a { color: #fff; text-decoration: none; font-size: 14px; font-weight: 600; padding: 7px 18px; border-radius: 25px; border: 1.5px solid rgba(255,255,255,0.18); transition: all 0.25s; font-family: 'Noto Sans Devanagari', sans-serif; }
+    nav a:hover { background: var(--saffron); border-color: var(--saffron); }
+
+    /* TICKER */
+    .ticker-wrap { background: var(--saffron); overflow: hidden; padding: 10px 0; }
+    .ticker { display: inline-block; white-space: nowrap; animation: ticker 22s linear infinite; color: #fff; font-weight: 700; font-size: 15px; font-family: 'Noto Sans Devanagari', sans-serif; }
+    @keyframes ticker { from { transform: translateX(100vw); } to { transform: translateX(-100%); } }
+
+    /* NOTICE BOX */
+    .notice-box { background: linear-gradient(120deg, #fff7e0, #fff3cd); border-left: 6px solid var(--gold); border-radius: 12px; margin: 28px auto; max-width: 900px; padding: 22px 28px; box-shadow: 0 4px 18px rgba(255,184,0,0.2); position: relative; }
+    .notice-box::before { content: '📢'; font-size: 28px; position: absolute; top: -16px; left: 20px; background: var(--cream); border-radius: 50%; padding: 2px; }
+    .notice-box h3 { color: var(--deep-orange); font-size: 19px; font-weight: 800; margin-bottom: 12px; font-family: 'Noto Sans Devanagari', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
+    .notice-box p { font-family: 'Noto Sans Devanagari', sans-serif; font-size: 16px; line-height: 1.8; color: #2a2a2a; }
+    .loan-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+    .loan-tag { background: var(--saffron); color: #fff; border-radius: 20px; padding: 6px 16px; font-size: 13.5px; font-weight: 700; font-family: 'Noto Sans Devanagari', sans-serif; box-shadow: 0 2px 8px rgba(255,107,0,0.25); }
+
+    /* SECTION TITLE */
+    .section-title { text-align: center; font-size: clamp(20px, 4vw, 30px); font-weight: 800; color: var(--navy); margin: 36px 16px 20px; font-family: 'Noto Sans Devanagari', sans-serif; position: relative; }
+    .section-title::after { content: ''; display: block; width: 70px; height: 4px; background: var(--saffron); border-radius: 4px; margin: 8px auto 0; }
+
+    /* ======= ORDER SECTION ======= */
+    #order-section { max-width: 900px; margin: 0 auto 36px; padding: 0 16px; }
+    .order-box { background: linear-gradient(135deg, #fff, #f0f6ff); border: 2.5px solid var(--navy); border-radius: 20px; padding: 28px 24px; box-shadow: 0 6px 28px rgba(0,35,102,0.13); }
+    .order-box h2 { font-family: 'Noto Sans Devanagari', sans-serif; font-size: 22px; font-weight: 800; color: var(--navy); margin-bottom: 18px; text-align: center; }
+    .order-box .name-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; }
+    .order-box input[type="text"] { flex: 1; min-width: 200px; padding: 12px 16px; border: 2px solid var(--gold); border-radius: 10px; font-size: 16px; font-family: 'Noto Sans Devanagari', sans-serif; outline: none; background: #fffbf0; }
+    .order-box input[type="text"]:focus { border-color: var(--saffron); }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); gap: 12px; margin-bottom: 18px; }
+    .svc-btn { background: #fff; border: 2px solid #dde3f0; border-radius: 14px; padding: 14px 10px; cursor: pointer; text-align: center; transition: all 0.22s; font-family: 'Noto Sans Devanagari', sans-serif; font-size: 14px; font-weight: 600; color: var(--navy); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .svc-btn .svc-icon { font-size: 28px; margin-bottom: 6px; display: block; }
+    .svc-btn:hover { border-color: var(--saffron); background: #fff8f0; transform: translateY(-3px); }
+    .svc-btn.selected { border-color: var(--saffron); background: linear-gradient(135deg, #fff3e0, #ffe0b2); color: var(--deep-orange); box-shadow: 0 4px 16px rgba(255,107,0,0.25); transform: translateY(-3px); }
+
+    /* DOCS POPUP */
+    #docs-panel { display: none; background: linear-gradient(135deg, #e8f5e9, #f1f8e9); border: 2.5px solid var(--green); border-radius: 16px; padding: 22px 20px; margin-bottom: 18px; }
+    #docs-panel h3 { font-family: 'Noto Sans Devanagari', sans-serif; font-size: 18px; font-weight: 800; color: var(--dark-green); margin-bottom: 12px; }
+    #docs-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    #docs-list li { font-family: 'Noto Sans Devanagari', sans-serif; font-size: 15px; color: #1a3a1a; display: flex; align-items: flex-start; gap: 8px; }
+    #docs-list li::before { content: '✅'; flex-shrink: 0; }
+    .send-wa-btn { display: block; width: 100%; padding: 16px; background: linear-gradient(135deg, #25D366, #1da851); color: #fff; border: none; border-radius: 14px; font-size: 17px; font-weight: 800; font-family: 'Noto Sans Devanagari', sans-serif; cursor: pointer; box-shadow: 0 4px 16px rgba(37,211,102,0.35); transition: all 0.25s; letter-spacing: 0.5px; }
+    .send-wa-btn:hover { background: linear-gradient(135deg, #1da851, #138808); transform: scale(1.02); }
+    .send-wa-btn:disabled { background: #aaa; cursor: not-allowed; transform: none; }
+    .select-hint { text-align: center; font-family: 'Noto Sans Devanagari', sans-serif; font-size: 14px; color: #888; margin-bottom: 14px; }
+
+    /* SERVICES CARDS */
+    .services { max-width: 900px; margin: 0 auto 36px; padding: 0 16px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+    .service-card { background: linear-gradient(135deg, #fff, #fff8f0); border: 2px solid var(--gold); border-radius: 16px; padding: 22px 18px; text-align: center; box-shadow: var(--shadow); transition: transform 0.25s; }
+    .service-card:hover { transform: translateY(-5px); }
+    .service-card .icon { font-size: 36px; margin-bottom: 10px; }
+    .service-card h4 { font-size: 15px; font-weight: 700; color: var(--navy); font-family: 'Noto Sans Devanagari', sans-serif; }
+
+    /* GALLERY */
+    .gallery { max-width: 900px; margin: 0 auto 36px; padding: 0 16px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    .gallery-card { border-radius: 18px; overflow: hidden; box-shadow: 0 8px 28px rgba(0,0,0,0.14); border: 3px solid var(--gold); }
+    .gallery-card img { width: 100%; display: block; object-fit: cover; max-height: 320px; }
+    .gallery-card .caption { background: linear-gradient(to right, var(--saffron), var(--navy)); color: #fff; text-align: center; padding: 10px 16px; font-size: 14px; font-family: 'Noto Sans Devanagari', sans-serif; font-weight: 600; }
+    .img-placeholder { background: linear-gradient(135deg,#ff6b00,#002366); color:#fff; text-align:center; padding:60px 20px; font-family:'Noto Sans Devanagari',sans-serif; font-size:18px; display:none; }
+
+    /* TIMING BOX */
+    .timing-box { max-width: 900px; margin: 0 auto 28px; padding: 0 16px; }
+    .timing-inner { background: linear-gradient(120deg, #fff7e0, #fff3cd); border-left: 6px solid var(--green); border-radius: 12px; padding: 22px 28px; box-shadow: 0 4px 18px rgba(19,136,8,0.13); }
+    .timing-inner h3 { color: var(--dark-green); font-size: 18px; font-weight: 800; margin-bottom: 10px; font-family: 'Noto Sans Devanagari', sans-serif; }
+    .timing-inner p { font-family: 'Noto Sans Devanagari', sans-serif; font-size: 15px; line-height: 1.9; color: #2a2a2a; }
+
+    /* FOOTER */
+    footer { background: linear-gradient(135deg, var(--navy), #001040); color: #cdd8ff; text-align: center; padding: 28px 16px 90px; font-size: 14px; font-family: 'Noto Sans Devanagari', sans-serif; }
+    footer strong { color: var(--gold); }
+    .footer-phone { font-size: 20px; color: #fff; font-weight: 800; margin: 8px 0; }
+
+    /* WHATSAPP FLOAT */
+    .whatsapp-btn { position: fixed; bottom: 28px; right: 22px; z-index: 9999; display: flex; align-items: center; gap: 10px; background: #25D366; color: #fff; text-decoration: none; border-radius: 50px; padding: 14px 22px 14px 16px; font-size: 15px; font-weight: 700; box-shadow: 0 6px 28px rgba(37,211,102,0.45); transition: all 0.3s; animation: pulse-wa 2s infinite; }
+    .whatsapp-btn:hover { background: #1da851; transform: scale(1.06); }
+    .whatsapp-btn svg { width: 28px; height: 28px; flex-shrink: 0; }
+    @keyframes pulse-wa { 0%,100% { box-shadow: 0 6px 28px rgba(37,211,102,0.45); } 50% { box-shadow: 0 6px 40px rgba(37,211,102,0.75); } }
+
+    /* SUCCESS MSG */
+    #success-msg { display: none; background: #e8f5e9; border: 2px solid var(--green); border-radius: 12px; padding: 16px 20px; text-align: center; font-family: 'Noto Sans Devanagari', sans-serif; font-size: 16px; color: var(--dark-green); font-weight: 700; margin-top: 14px; }
+  </style>
+</head>
+<body>
+
+<div class="top-bar">🇮🇳 सरकारी सेवाएं | डिजिटल इंडिया | जन सेवा केंद्र 🇮🇳</div>
+
+<header>
+  <div class="header-inner">
+    <div class="logo-circle">🖥️</div>
+    <div class="header-text">
+      <h1>RAVI <span>CSC</span> CYBER CAFE</h1>
+      <div class="sub">जन सेवा केंद्र — डिजिटल सेवा</div>
+      <div class="phone">📞 6395373132 &nbsp;|&nbsp; 8755572903</div>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <a href="#order-section">📋 क्या बनवाना है?</a>
+  <a href="#services">सेवाएं</a>
+  <a href="#loans">लोन</a>
+  <a href="#gallery">फ़ोटो</a>
+  <a href="#contact">संपर्क</a>
+</nav>
+
+<div class="ticker-wrap">
+  <span class="ticker">🌟 RAVI CSC CYBER CAFE में आपका स्वागत है! &nbsp;&nbsp;&nbsp; 📋 सभी सरकारी कार्य यहाँ होते हैं &nbsp;&nbsp;&nbsp; 💰 सभी प्रकार के लोन उपलब्ध &nbsp;&nbsp;&nbsp; 📞 6395373132 | 8755572903 &nbsp;&nbsp;&nbsp;</span>
+</div>
+
+<!-- ===== ORDER / WHAT TO MAKE SECTION ===== -->
+<div class="section-title" id="order-section">📋 आप क्या बनवाना चाहते हैं?</div>
+<div style="max-width:900px; margin:0 auto 8px; padding:0 20px; text-align:center;">
+  <p style="font-family:'Noto Sans Devanagari',sans-serif; font-size:15px; color:#555;">नीचे अपना नाम लिखें और जो बनवाना हो उस पर क्लिक करें — जरूरी कागज़ात दिखेंगे और हमें WhatsApp पर सूचना आ जाएगी।</p>
+</div>
+
+<div id="order-section-box" style="max-width:900px; margin:0 auto 36px; padding:0 16px;">
+  <div class="order-box">
+    <h2>🗂️ अपनी सेवा चुनें</h2>
+    <div class="name-row">
+      <input type="text" id="customerName" placeholder="👤 अपना पूरा नाम लिखें..." />
+      <input type="text" id="customerPhone" placeholder="📱 अपना मोबाइल नंबर (वैकल्पिक)" />
+    </div>
+
+    <div class="select-hint">👇 नीचे जो बनवाना हो उस पर क्लिक करें</div>
+
+    <div class="services-grid" id="servicesGrid">
+      <button class="svc-btn" onclick="selectService(this, 'आधार कार्ड')"><span class="svc-icon">🪪</span>आधार कार्ड</button>
+      <button class="svc-btn" onclick="selectService(this, 'पैन कार्ड')"><span class="svc-icon">💳</span>पैन कार्ड</button>
+      <button class="svc-btn" onclick="selectService(this, 'वोटर ID कार्ड')"><span class="svc-icon">🗳️</span>वोटर ID</button>
+      <button class="svc-btn" onclick="selectService(this, 'आयुष्मान कार्ड')"><span class="svc-icon">🏥</span>आयुष्मान कार्ड</button>
+      <button class="svc-btn" onclick="selectService(this, 'राशन कार्ड')"><span class="svc-icon">🧾</span>राशन कार्ड</button>
+      <button class="svc-btn" onclick="selectService(this, 'जन्म प्रमाण पत्र')"><span class="svc-icon">👶</span>जन्म प्रमाण पत्र</button>
+      <button class="svc-btn" onclick="selectService(this, 'मृत्यु प्रमाण पत्र')"><span class="svc-icon">📜</span>मृत्यु प्रमाण पत्र</button>
+      <button class="svc-btn" onclick="selectService(this, 'आय प्रमाण पत्र')"><span class="svc-icon">📋</span>आय प्रमाण पत्र</button>
+      <button class="svc-btn" onclick="selectService(this, 'जाति प्रमाण पत्र')"><span class="svc-icon">📄</span>जाति प्रमाण पत्र</button>
+      <button class="svc-btn" onclick="selectService(this, 'निवास प्रमाण पत्र')"><span class="svc-icon">🏠</span>निवास प्रमाण पत्र</button>
+      <button class="svc-btn" onclick="selectService(this, 'ड्राइविंग लाइसेंस')"><span class="svc-icon">🚗</span>ड्राइविंग लाइसेंस</button>
+      <button class="svc-btn" onclick="selectService(this, 'पासपोर्ट आवेदन')"><span class="svc-icon">✈️</span>पासपोर्ट</button>
+      <button class="svc-btn" onclick="selectService(this, 'पर्सनल लोन')"><span class="svc-icon">💰</span>पर्सनल लोन</button>
+      <button class="svc-btn" onclick="selectService(this, 'बिज़नेस लोन')"><span class="svc-icon">🏭</span>बिज़नेस लोन</button>
+      <button class="svc-btn" onclick="selectService(this, 'किसान लोन / KCC')"><span class="svc-icon">🌾</span>किसान लोन</button>
+      <button class="svc-btn" onclick="selectService(this, 'प्रॉपर्टी लोन')"><span class="svc-icon">🏘️</span>प्रॉपर्टी लोन</button>
+      <button class="svc-btn" onclick="selectService(this, 'बैंक खाता खोलना')"><span class="svc-icon">🏦</span>बैंक खाता</button>
+      <button class="svc-btn" onclick="selectService(this, 'प्रिंटिंग / स्कैनिंग')"><span class="svc-icon">🖨️</span>प्रिंटिंग / स्कैन</button>
+      <button class="svc-btn" onclick="selectService(this, 'बिजली बिल भुगतान')"><span class="svc-icon">💡</span>बिजली बिल</button>
+      <button class="svc-btn" onclick="selectService(this, 'पीएम किसान योजना')"><span class="svc-icon">🌿</span>PM किसान</button>
+      <button class="svc-btn" onclick="selectService(this, 'उद्यम / MSME पंजीकरण')"><span class="svc-icon">🏗️</span>उद्यम रजिस्ट्रेशन</button>
+      <button class="svc-btn" onclick="selectService(this, 'श्रमिक कार्ड')"><span class="svc-icon">👷</span>श्रमिक कार्ड</button>
+    </div>
+
+    <!-- DOCS PANEL -->
+    <div id="docs-panel">
+      <h3 id="docs-title">📂 जरूरी कागज़ात — <span id="docs-service-name"></span></h3>
+      <ul id="docs-list"></ul>
+    </div>
+
+    <button class="send-wa-btn" id="sendBtn" onclick="sendWhatsApp()" disabled>
+      📲 WhatsApp पर भेजें (दोनों नंबर पर सूचना जाएगी)
+    </button>
+    <div id="success-msg">✅ आपका मैसेज भेज दिया गया! हम जल्द संपर्क करेंगे 🙏</div>
+  </div>
+</div>
+
+<!-- LOAN NOTICE -->
+<div id="loans" class="notice-box" style="margin-top:0;">
+  <h3>🏦 सूचना: यहाँ सभी प्रकार के लोन किए जाते हैं</h3>
+  <p>हमारे जन सेवा केंद्र (RAVI CSC CYBER CAFE) में आपको सभी प्रकार की लोन सेवाएं प्रदान की जाती हैं।</p>
+  <div class="loan-list">
+    <span class="loan-tag">💳 पर्सनल लोन</span>
+    <span class="loan-tag">🏭 बिज़नेस लोन</span>
+    <span class="loan-tag">🏠 प्रॉपर्टी लोन</span>
+    <span class="loan-tag">🏛️ सरकारी लोन</span>
+    <span class="loan-tag">🚗 वाहन लोन</span>
+    <span class="loan-tag">🎓 एजुकेशन लोन</span>
+    <span class="loan-tag">🌾 किसान लोन</span>
+    <span class="loan-tag">✨ और भी बहुत कुछ</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div id="services">
+  <div class="section-title">हमारी सेवाएं</div>
+  <div class="services">
+    <div class="service-card"><div class="icon">📄</div><h4>आधार सेवाएं</h4></div>
+    <div class="service-card"><div class="icon">🗳️</div><h4>वोटर ID</h4></div>
+    <div class="service-card"><div class="icon">💡</div><h4>बिल भुगतान</h4></div>
+    <div class="service-card"><div class="icon">💰</div><h4>लोन सेवाएं</h4></div>
+    <div class="service-card"><div class="icon">📮</div><h4>पैन कार्ड</h4></div>
+    <div class="service-card"><div class="icon">🖨️</div><h4>प्रिंटिंग/स्कैनिंग</h4></div>
+    <div class="service-card"><div class="icon">🏦</div><h4>बैंकिंग सेवाएं</h4></div>
+    <div class="service-card"><div class="icon">📜</div><h4>सरकारी योजनाएं</h4></div>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<div id="gallery">
+  <div class="section-title">हमारी झलकियां — कार्यक्रम</div>
+  <div class="gallery">
+    <div class="gallery-card">
+      <img src="RAVI1.jpg" alt="बृहद क्रेडिट कैम्प" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="img-placeholder">📸 बृहद क्रेडिट कैम्प — लोन वितरण कार्यक्रम</div>
+      <div class="caption">🎉 बृहद क्रेडिट कैम्प — लोन वितरण समारोह, आगरा</div>
+    </div>
+    <div class="gallery-card">
+      <img src="Ravi.html.jpeg" alt="आगरा कार्यक्रम" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="img-placeholder">📸 आगरा कार्यक्रम</div>
+      <div class="caption">🎉 आगरा</div>
+    </div>
+    <div class="gallery-card">
+      <img src="WhatsApp Image 2026-05-03 at 3.02.15 PM.jpeg" alt="आगरा" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="img-placeholder">📸 आगरा कार्यक्रम</div>
+      <div class="caption">🎉 आगरा</div>
+    </div>
+    <div class="gallery-card">
+      <img src="WhatsApp Image 2026-05-03 at 3.02.02 PM.jpeg" alt="आगरा" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="img-placeholder">📸 आगरा कार्यक्रम</div>
+      <div class="caption">🎉 आगरा</div>
+    </div>
+    <div class="gallery-card">
+      <img src="WhatsApp Image 2026-05-03 at 3.02.05 PM (1).jpeg" alt="आगरा" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="img-placeholder">📸 आगरा कार्यक्रम</div>
+      <div class="caption">🎉 आगरा</div>
+    </div>
+    <div class="gallery-card">
+      <img src="WhatsApp Image 2026-05-03 at 3.02.12 PM (2).jpeg" alt="आगरा" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="img-placeholder">📸 आगरा कार्यक्रम</div>
+      <div class="caption">🎉 आगरा</div>
+    </div>
+    <div class="gallery-card">
+      <img src="WhatsApp Image 2026-05-03 at 3.02.04 PM (1).jpeg" alt="आगरा" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="img-placeholder">📸 आगरा कार्यक्रम</div>
+      <div class="caption">🎉 आगरा</div>
+    </div>
+    <div class="gallery-card">
+      <img src="WhatsApp_Image_2026-05-03_at_3_02_12_PM__1_.jpeg" alt="बृहद क्रेडिट कैम्प" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="img-placeholder">📸 बृहद क्रेडिट कैम्प</div>
+      <div class="caption">🎉 बृहद क्रेडिट कैम्प — आगरा</div>
+    </div>
+  </div>
+</div>
+
+<!-- TIMING -->
+<div class="timing-box">
+  <div class="timing-inner">
+    <h3>🕘 खुलने का समय</h3>
+    <p><strong>सोमवार – शनिवार:</strong> सुबह 9:00 बजे – शाम 8:00 बजे</p>
+    <p style="margin-top:10px;">सेवा ही हमारा कर्म है। हम अपने ग्राहकों को सर्वोत्तम सेवा प्रदान करने के लिए प्रतिबद्ध हैं। हमारे जन सेवा केंद्र में आपको सभी सरकारी सेवाएं एक ही छत के नीचे मिलेंगी — आधार कार्ड, पैन कार्ड, वोटर ID, लोन सेवाएं और भी बहुत कुछ। हमारा अनुभवी स्टाफ आपकी हर जरूरत का ध्यान रखेगा।</p>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="contact">
+  <div class="section-title">संपर्क करें</div>
+  <div style="max-width:500px; margin:0 auto 36px; padding:0 16px; text-align:center;">
+    <div style="background:#fff; border-radius:18px; padding:28px; box-shadow:0 4px 24px rgba(0,0,0,0.1); border:2px solid var(--gold);">
+      <div style="font-size:48px; margin-bottom:12px;">📞</div>
+      <div style="font-family:'Noto Sans Devanagari',sans-serif; font-size:17px; color:#444; margin-bottom:12px;">किसी भी सेवा के लिए हमसे अभी बात करें</div>
+      <a href="tel:6395373132" style="display:inline-block; background:var(--saffron); color:#fff; text-decoration:none; border-radius:30px; padding:12px 28px; font-size:20px; font-weight:800; letter-spacing:2px; box-shadow:0 4px 16px rgba(255,107,0,0.3); margin-bottom:10px; width:100%;">📱 6395373132</a>
+      <a href="tel:8755572903" style="display:inline-block; background:var(--deep-orange); color:#fff; text-decoration:none; border-radius:30px; padding:12px 28px; font-size:20px; font-weight:800; letter-spacing:2px; box-shadow:0 4px 16px rgba(255,107,0,0.3); margin-bottom:14px; width:100%;">📱 8755572903</a>
+      <br>
+      <a href="https://wa.me/916395373132" target="_blank" style="display:inline-block; background:#25D366; color:#fff; text-decoration:none; border-radius:30px; padding:12px 28px; font-size:15px; font-weight:700; margin-top:8px;">💬 WhatsApp पर चैट करें</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <strong>RAVI CSC CYBER CAFE</strong> — जन सेवा केंद्र
+  <div class="footer-phone">📞 6395373132 | 8755572903</div>
+  <p>डिजिटल इंडिया मिशन | सभी सरकारी सेवाएं एक छत के नीचे</p>
+  <p style="margin-top:10px; font-size:12px; color:#8899cc;">© 2026 RAVI CSC CYBER CAFE. All Rights Reserved.</p>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/916395373132" class="whatsapp-btn" target="_blank">
+  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="16" cy="16" r="16" fill="#25D366"/>
+    <path d="M23.5 8.5C21.7 6.7 19.3 5.7 16.7 5.7C11.3 5.7 6.9 10.1 6.9 15.5C6.9 17.3 7.4 19 8.3 20.5L6.8 25.3L11.7 23.8C13.2 24.7 14.9 25.1 16.7 25.1C22.1 25.1 26.5 20.7 26.5 15.3C26.5 12.7 25.3 10.3 23.5 8.5ZM16.7 23.5C15.1 23.5 13.5 23.1 12.2 22.3L11.9 22.1L9 23L9.9 20.2L9.7 19.9C8.8 18.5 8.4 16.9 8.4 15.3C8.4 10.8 12.1 7.1 16.7 7.1C18.9 7.1 21 7.9 22.5 9.5C24.1 11 24.9 13 24.9 15.3C25 19.8 21.2 23.5 16.7 23.5ZM21.2 17.5C21 17.4 19.8 16.8 19.6 16.7C19.4 16.6 19.3 16.6 19.1 16.8C19 17 18.5 17.6 18.4 17.7C18.3 17.9 18.1 17.9 17.9 17.8C17.7 17.7 17.1 17.5 16.3 16.8C15.7 16.2 15.3 15.5 15.2 15.3C15.1 15.1 15.2 15 15.3 14.9L15.6 14.6C15.7 14.5 15.7 14.4 15.8 14.3C15.9 14.2 15.9 14.1 15.9 14C15.9 13.9 15.5 12.7 15.3 12.2C15.2 11.7 15 11.8 14.8 11.8H14.4C14.3 11.8 14.1 11.8 13.9 12C13.7 12.2 13.1 12.8 13.1 14C13.1 15.2 13.9 16.3 14 16.5C14.1 16.7 15.5 18.8 17.6 19.9C18.1 20.1 18.5 20.3 18.8 20.4C19.3 20.6 19.8 20.6 20.2 20.5C20.6 20.4 21.5 19.9 21.7 19.3C21.9 18.7 21.9 18.2 21.8 18.1C21.7 17.8 21.5 17.7 21.2 17.5Z" fill="white"/>
+  </svg>
+  WhatsApp पर बात करें
+</a>
+
+<script>
+// ===== DOCUMENTS DATABASE =====
+const docsDB = {
+  'आधार कार्ड': ['पुराना आधार कार्ड (यदि है)', 'जन्म प्रमाण पत्र (जन्म तिथि के लिए)', 'पते का प्रमाण — बिजली बिल / राशन कार्ड / बैंक पासबुक', 'मोबाइल नंबर (OTP के लिए)', 'पासपोर्ट साइज़ फ़ोटो (2)'],
+  'पैन कार्ड': ['आधार कार्ड', 'जन्म प्रमाण पत्र', 'पासपोर्ट साइज़ फ़ोटो (2)', 'मोबाइल नंबर और ईमेल ID'],
+  'वोटर ID कार्ड': ['आधार कार्ड', 'पते का प्रमाण', 'पासपोर्ट साइज़ फ़ोटो (2)', 'मोबाइल नंबर'],
+  'आयुष्मान कार्ड': ['आधार कार्ड', 'राशन कार्ड', 'मोबाइल नंबर (आधार से लिंक)', 'परिवार के सभी सदस्यों की जानकारी'],
+  'राशन कार्ड': ['आधार कार्ड (सभी परिवार सदस्यों का)', 'परिवार के मुखिया का फ़ोटो', 'निवास प्रमाण पत्र', 'आय प्रमाण पत्र', 'बैंक पासबुक'],
+  'जन्म प्रमाण पत्र': ['अस्पताल का डिस्चार्ज पेपर / जन्म स्लिप', 'माता-पिता का आधार कार्ड', 'माता-पिता का विवाह प्रमाण पत्र', 'निवास प्रमाण पत्र'],
+  'मृत्यु प्रमाण पत्र': ['मृतक का आधार कार्ड', 'अस्पताल की मृत्यु रिपोर्ट / डॉक्टर का प्रमाण पत्र', 'आवेदक का आधार कार्ड', 'मृत्यु की तारीख और स्थान की जानकारी'],
+  'आय प्रमाण पत्र': ['आधार कार्ड', 'राशन कार्ड', 'स्वघोषणा पत्र (आय का)', 'पासपोर्ट साइज़ फ़ोटो (2)'],
+  'जाति प्रमाण पत्र': ['आधार कार्ड', 'राशन कार्ड', 'पुराना जाति प्रमाण पत्र (यदि है)', 'पासपोर्ट साइज़ फ़ोटो (2)', 'स्वघोषणा पत्र'],
+  'निवास प्रमाण पत्र': ['आधार कार्ड', 'राशन कार्ड', 'बिजली बिल / मकान के कागज़', 'पासपोर्ट साइज़ फ़ोटो (2)'],
+  'ड्राइविंग लाइसेंस': ['आधार कार्ड', 'पते का प्रमाण', 'पासपोर्ट साइज़ फ़ोटो (4)', 'मेडिकल सर्टिफिकेट (Form 1A)', 'उम्र प्रमाण पत्र (18+ वर्ष)'],
+  'पासपोर्ट आवेदन': ['आधार कार्ड', 'पैन कार्ड', 'जन्म प्रमाण पत्र', 'पते का प्रमाण', 'पासपोर्ट साइज़ फ़ोटो (4)', 'ईमेल ID और मोबाइल नंबर'],
+  'पर्सनल लोन': ['आधार कार्ड', 'पैन कार्ड', 'बैंक पासबुक (6 महीने का स्टेटमेंट)', 'सैलरी स्लिप / आय प्रमाण', 'पासपोर्ट साइज़ फ़ोटो (2)', 'मोबाइल नंबर'],
+  'बिज़नेस लोन': ['आधार कार्ड', 'पैन कार्ड', 'बिज़नेस रजिस्ट्रेशन प्रमाण', 'बैंक स्टेटमेंट (12 महीने)', 'ITR / GST रिटर्न', 'दुकान / ऑफिस का प्रमाण', 'पासपोर्ट साइज़ फ़ोटो (2)'],
+  'किसान लोन / KCC': ['आधार कार्ड', 'किसान पास बुक / खसरा-खतौनी', 'बैंक पासबुक', 'पासपोर्ट साइज़ फ़ोटो (2)', 'ज़मीन के कागज़ात'],
+  'प्रॉपर्टी लोन': ['आधार कार्ड', 'पैन कार्ड', 'प्रॉपर्टी के कागज़ात (रजिस्ट्री / नक्शा)', 'बैंक स्टेटमेंट (6 महीने)', 'आय प्रमाण / ITR', 'पासपोर्ट साइज़ फ़ोटो (2)'],
+  'बैंक खाता खोलना': ['आधार कार्ड', 'पैन कार्ड', 'पासपोर्ट साइज़ फ़ोटो (2)', 'मोबाइल नंबर', 'न्यूनतम राशि (बैंक अनुसार)'],
+  'प्रिंटिंग / स्कैनिंग': ['जो भी डॉक्यूमेंट प्रिंट या स्कैन करना हो', 'Soft Copy (Pen Drive / Mobile / Email)'],
+  'बिजली बिल भुगतान': ['बिजली बिल (Account Number)', 'भुगतान राशि'],
+  'पीएम किसान योजना': ['आधार कार्ड', 'बैंक पासबुक (आधार लिंक)', 'खसरा-खतौनी / ज़मीन के कागज़', 'मोबाइल नंबर'],
+  'उद्यम / MSME पंजीकरण': ['आधार कार्ड', 'PAN Card', 'बिज़नेस का नाम और पता', 'बैंक खाता विवरण', 'व्यापार का प्रकार (Manufacturing/Service)', 'मोबाइल नंबर और ईमेल'],
+  'श्रमिक कार्ड': ['आधार कार्ड', 'राशन कार्ड', 'बैंक पासबुक', 'पासपोर्ट साइज़ फ़ोटो (2)', 'नियोक्ता / ठेकेदार का प्रमाण पत्र (यदि हो)']
+};
+
+let selectedService = null;
+
+function selectService(btn, serviceName) {
+  // Remove previous selection
+  document.querySelectorAll('.svc-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  selectedService = serviceName;
+
+  // Show docs
+  const docs = docsDB[serviceName] || ['संबंधित दस्तावेज़ लेकर आएं'];
+  const panel = document.getElementById('docs-panel');
+  const list = document.getElementById('docs-list');
+  document.getElementById('docs-service-name').textContent = serviceName;
+  list.innerHTML = docs.map(d => `<li>${d}</li>`).join('');
+  panel.style.display = 'block';
+  panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+  // Enable button
+  document.getElementById('sendBtn').disabled = false;
+  document.getElementById('success-msg').style.display = 'none';
+}
+
+function sendWhatsApp() {
+  const name = document.getElementById('customerName').value.trim();
+  const phone = document.getElementById('customerPhone').value.trim();
+
+  if (!name) {
+    alert('कृपया पहले अपना नाम लिखें!');
+    document.getElementById('customerName').focus();
+    return;
+  }
+  if (!selectedService) {
+    alert('कृपया पहले कोई सेवा चुनें!');
+    return;
+  }
+
+  const docs = docsDB[selectedService] || [];
+  const docsList = docs.map((d, i) => `${i+1}. ${d}`).join('\n');
+  const phoneInfo = phone ? `\n📱 ग्राहक का नंबर: ${phone}` : '';
+
+  const msg = `🙏 *नमस्ते — RAVI CSC CYBER CAFE*\n\n*नया ग्राहक अनुरोध:*\n👤 नाम: *${name}*${phoneInfo}\n🗂️ सेवा: *${selectedService}*\n\n📂 *जरूरी कागज़ात:*\n${docsList}\n\n📅 कृपया जल्द संपर्क करें।`;
+
+  const encoded = encodeURIComponent(msg);
+
+  // Open first number
+  window.open(`https://wa.me/916395373132?text=${encoded}`, '_blank');
+
+  // Open second number after small delay
+  setTimeout(() => {
+    window.open(`https://wa.me/918755572903?text=${encoded}`, '_blank');
+  }, 1200);
+
+  document.getElementById('success-msg').style.display = 'block';
+}
+</script>
+
+</body>
+</html>
